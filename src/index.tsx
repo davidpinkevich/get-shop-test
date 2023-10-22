@@ -3,6 +3,7 @@ import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/store';
 import './styles/normalize.scss';
+import './styles/fonts.scss';
 import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);

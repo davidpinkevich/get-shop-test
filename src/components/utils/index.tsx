@@ -29,7 +29,6 @@ const addClassName = ({ id, focus, close }: TClasses) => {
   } else if (id === 'confirm') {
     return 'button__number-confirm';
   } else if (id === focus && id === 'close' && close) {
-    console.log('KEK');
     return 'button__number-close focus close-animation';
   } else if (id === 'close' && close) {
     return 'button__number-close close-animation';

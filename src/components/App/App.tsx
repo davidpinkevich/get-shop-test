@@ -1,4 +1,5 @@
 import Wrapper from '../Wrapper/Wrapper';
+import './App.scss';
 
 const App = () => {
   return (
