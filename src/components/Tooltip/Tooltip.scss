@@ -1,0 +1,74 @@
+.tooltip {
+  position: absolute;
+  top: 220px;
+  right: -260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background-color: #86d3f4;
+  width: 251px;
+  height: 357px;
+  opacity: 0;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  line-height: normal;
+  font-family: 'Roboto', sans-serif;
+  padding: 20px 10px 10px 10px;
+  transition: all 0.5s;
+
+  &.tooltip__view {
+    opacity: 1;
+    right: 0;
+    animation: onePulse 0.8s;
+    animation-delay: 0.5s;
+  }
+
+  &__header {
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  &__qr {
+    width: 126px;
+    height: 126px;
+  }
+  &__info {
+    font-size: 14px;
+    line-height: normal;
+    width: 130px;
+  }
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-style: normal;
+    width: 156px;
+    height: 52px;
+    font-weight: 500;
+    line-height: normal;
+    background-color: black;
+    color: #86d3f4;
+    transition: all 0.3s;
+    &:hover {
+      transform: scale(1.1);
+      color: white;
+      border-radius: 4px;
+      box-shadow: inset 0px 0px 3px 3px white;
+    }
+  }
+}
+
+@keyframes onePulse {
+  0% {
+    right: 0;
+  }
+  50% {
+    right: 10px;
+  }
+  100% {
+    right: 0;
+  }
+}
