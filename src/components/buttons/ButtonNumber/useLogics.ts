@@ -1,4 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import audioClose from '../../../assets/audio/open.mp3';
+import audioClick from '../../../assets/audio/click.mp3';
 import {
   changeFocus,
   changeNumber,
@@ -10,6 +12,7 @@ import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { changeDirection } from '../../../utils';
 
 const useLogics = (id: string, ref: React.ForwardedRef<HTMLButtonElement>) => {
+  const [audio] = useState(new Audio(id === 'close' ? audioClose : audioClick));
   const focusButton = useAppSelector((state) => state.infoReducer.focusButton);
   useEffect(() => {
     if (ref !== null && 'current' in ref) ref.current?.focus();
@@ -18,6 +21,7 @@ const useLogics = (id: string, ref: React.ForwardedRef<HTMLButtonElement>) => {
   const handlerButton = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     event.preventDefault();
     if (event.code === 'Enter') {
+      audio.play();
       dispatch(changeNumber(id));
       if (id === 'close') {
         dispatch(changeHidden(true));
@@ -34,6 +38,7 @@ const useLogics = (id: string, ref: React.ForwardedRef<HTMLButtonElement>) => {
     }
   };
   const handlerMouse = () => {
+    audio.play();
     dispatch(changeFocus(id));
     dispatch(changeNumber(id));
     if (id === 'close') {
