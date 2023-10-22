@@ -7,7 +7,7 @@ import {
   viewTooltip,
 } from '../../../redux/slice';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
-import { changeDirection } from '../../utils';
+import { changeDirection } from '../../../utils';
 
 const useLogics = (id: string, ref: React.ForwardedRef<HTMLButtonElement>) => {
   const focusButton = useAppSelector((state) => state.infoReducer.focusButton);

@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import { useAppSelector } from '../../../hooks';
-import { addClassName, contentForButton } from '../../utils';
+import { addClassName, contentForButton } from '../../../utils';
 import useLogics from './useLogics';
 
 import './ButtonNumber.scss';
