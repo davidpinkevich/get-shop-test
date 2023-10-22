@@ -13,4 +13,16 @@ const changeDirection = ({ id, click }: { id: string; click: string }) => {
   }
 };
 
-export { changeDirection };
+const addClassName = ({ id, focus }: { id: string; focus: string | null }) => {
+  if (id === focus && !isNaN(Number(id))) {
+    return 'button__number-number focus';
+  } else if (id === focus && id === 'clear') {
+    return 'button__number-clear focus';
+  } else if (!isNaN(Number(id))) {
+    return 'button__number-number';
+  } else if (id === 'clear') {
+    return 'button__number-clear';
+  }
+};
+
+export { changeDirection, addClassName };
