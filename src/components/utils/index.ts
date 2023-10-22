@@ -1,6 +1,7 @@
 import { LOGIC } from '../../constants';
+import { TClasses, TDirection } from '../../types';
 
-const changeDirection = ({ id, click }: { id: string; click: string }) => {
+const changeDirection = ({ id, click }: TDirection) => {
   switch (click) {
     case 'ArrowUp':
       return LOGIC[id].ArrowUp;
@@ -13,7 +14,7 @@ const changeDirection = ({ id, click }: { id: string; click: string }) => {
   }
 };
 
-const addClassName = ({ id, focus }: { id: string; focus: string | null }) => {
+const addClassName = ({ id, focus }: TClasses) => {
   if (id === focus && !isNaN(Number(id))) {
     return 'button__number-number focus';
   } else if (id === focus && id === 'clear') {
