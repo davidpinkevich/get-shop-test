@@ -1,12 +1,26 @@
 import { TLogic } from '../types';
 
-const PANEL: Array<string> = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'clear', '0'];
+const PANEL: Array<string> = [
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  'clear',
+  '0',
+  'confirm',
+  'close',
+];
 
 const LOGIC: TLogic = {
   '0': {
     ArrowUp: '9',
-    ArrowRight: null,
-    ArrowDown: null,
+    ArrowRight: 'close',
+    ArrowDown: 'confirm',
     ArrowLeft: 'clear',
   },
   '1': {
@@ -23,7 +37,7 @@ const LOGIC: TLogic = {
   },
   '3': {
     ArrowUp: null,
-    ArrowRight: null,
+    ArrowRight: 'close',
     ArrowDown: '6',
     ArrowLeft: '2',
   },
@@ -41,7 +55,7 @@ const LOGIC: TLogic = {
   },
   '6': {
     ArrowUp: '3',
-    ArrowRight: null,
+    ArrowRight: 'close',
     ArrowDown: '9',
     ArrowLeft: '5',
   },
@@ -59,15 +73,27 @@ const LOGIC: TLogic = {
   },
   '9': {
     ArrowUp: '6',
-    ArrowRight: null,
+    ArrowRight: 'close',
     ArrowDown: '0',
     ArrowLeft: '8',
   },
   clear: {
     ArrowUp: '7',
     ArrowRight: '0',
+    ArrowDown: 'confirm',
+    ArrowLeft: null,
+  },
+  confirm: {
+    ArrowUp: '0',
+    ArrowRight: 'close',
     ArrowDown: null,
     ArrowLeft: null,
+  },
+  close: {
+    ArrowUp: null,
+    ArrowRight: null,
+    ArrowDown: '3',
+    ArrowLeft: '3',
   },
 };
 

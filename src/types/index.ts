@@ -13,4 +13,4 @@ export type TLogic = {
 
 export type TDirection = { id: string; click: string };
 
-export type TClasses = { id: string; focus: string | null };
+export type TClasses = { id: string; focus: string | null; close?: boolean };
