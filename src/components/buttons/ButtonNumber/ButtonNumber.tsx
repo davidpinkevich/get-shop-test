@@ -1,45 +1,24 @@
-import React, { forwardRef, useEffect } from 'react';
-import { changeFocus, changeNumber } from '../../../redux/slice';
-import { useAppDispatch, useAppSelector } from '../../../hooks';
-import { changeDirection } from '../../utils';
+import React, { forwardRef } from 'react';
+import { useAppSelector } from '../../../hooks';
+import { addClassName, contentForButton } from '../../utils';
+import useLogics from './useLogics';
 
 import './ButtonNumber.scss';
 
 const ButtonNumber = forwardRef(
   ({ id }: { id: string }, ref: React.ForwardedRef<HTMLButtonElement>) => {
     const focusButton = useAppSelector((state) => state.infoReducer.focusButton);
-    useEffect(() => {
-      if (ref !== null && 'current' in ref) ref.current?.focus();
-    }, [ref, focusButton]);
-    const dispatch = useAppDispatch();
-
-    const handlerButton = (event: React.KeyboardEvent<HTMLButtonElement>) => {
-      event.preventDefault();
-      if (event.code === 'Enter') {
-        dispatch(changeNumber(id));
-      } else if (
-        event.code === 'ArrowUp' ||
-        event.code === 'ArrowRight' ||
-        event.code === 'ArrowDown' ||
-        event.code === 'ArrowLeft'
-      ) {
-        dispatch(changeFocus(changeDirection({ id, click: event.code })));
-      }
-    };
-
-    const handlerMouse = () => {
-      dispatch(changeFocus(id));
-      dispatch(changeNumber(id));
-    };
+    const { handlerButton, handlerMouse } = useLogics(id, ref);
+    const hidden = useAppSelector((state) => state.infoReducer.panelHidden);
 
     return (
       <button
         ref={id === focusButton ? ref : null}
-        className={focusButton === id ? 'button__number focus' : 'button__number'}
+        className={addClassName({ id, focus: focusButton, close: hidden ? false : true })}
         onKeyDown={handlerButton}
         onClick={handlerMouse}
       >
-        {id}
+        {contentForButton(id)}
       </button>
     );
   }
