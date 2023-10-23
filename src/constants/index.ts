@@ -1,5 +1,10 @@
 import { TLogic } from '../types';
 
+const URL = {
+  PATH: 'http://apilayer.net/api/validate?',
+  API_KEY: '1b3c8fcd36d6846749054cf0bc2ac733',
+};
+
 const PANEL: Array<string> = [
   '1',
   '2',
@@ -97,4 +102,4 @@ const LOGIC: TLogic = {
   },
 };
 
-export { PANEL, LOGIC };
+export { PANEL, LOGIC, URL };
