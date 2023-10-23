@@ -31,6 +31,8 @@ const useLogics = (id: string, ref: React.ForwardedRef<HTMLButtonElement>) => {
         dispatch(viewTooltip(true));
       } else if (id === 'confirm') {
         dispatch(checkValid(phone));
+      } else if (id === 'clear') {
+        dispatch(changeValidNumber());
       }
     } else if (
       event.code === 'ArrowUp' ||
@@ -54,6 +56,8 @@ const useLogics = (id: string, ref: React.ForwardedRef<HTMLButtonElement>) => {
       dispatch(viewTooltip(true));
     } else if (id === 'confirm') {
       dispatch(checkValid(phone));
+    } else if (id === 'clear') {
+      dispatch(changeValidNumber());
     }
   };
   return { handlerButton, handlerMouse };

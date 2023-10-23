@@ -32,7 +32,7 @@ const ButtonNumber = forwardRef(
             style={{ position: 'absolute', right: '60px' }}
             size={8}
             loading={loading}
-            color="#86D3F4"
+            color="#98a3a7"
           />
         )}
       </button>
