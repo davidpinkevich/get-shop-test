@@ -50,4 +50,17 @@ const contentForButton = (id: string) => {
   }
 };
 
-export { changeDirection, addClassName, contentForButton };
+const deleteNumberPhone = (str: string) => {
+  const endStr = str.slice(2);
+  return (
+    '+7' + endStr.split('').reverse().join('').replace(/[0-9]/, '_').split('').reverse().join('')
+  );
+};
+
+const countNumbers = (str: string) => {
+  const regex = /\d/g;
+  const matches = str.match(regex);
+  return matches ? matches.length : 0;
+};
+
+export { changeDirection, addClassName, contentForButton, deleteNumberPhone, countNumbers };
