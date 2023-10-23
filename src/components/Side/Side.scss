@@ -1,5 +1,29 @@
 .side {
-  display: flex;
-  flex-wrap: wrap;
-  width: 150px;
+  position: absolute;
+  padding-top: 70px;
+  top: 0;
+  left: -100%;
+  text-align: center;
+  width: 380px;
+  height: 100%;
+  background-color: #86d3f4;
+  transition: all 0.5s;
+  &__title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 26px;
+    font-style: normal;
+    line-height: normal;
+  }
+  &__info {
+    margin: 0 auto;
+    width: 328px;
+    margin-top: 12px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    line-height: normal;
+  }
+}
+.view {
+  left: 0;
 }
