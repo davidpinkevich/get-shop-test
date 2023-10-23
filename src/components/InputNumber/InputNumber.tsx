@@ -6,13 +6,16 @@ import './InputNumber.scss';
 const InputNumber = () => {
   const dispatch = useAppDispatch();
   const phone = useAppSelector((state) => state.infoReducer.phoneNumber);
+  const valid = useAppSelector((state) => state.infoReducer.validNumber);
   const handlerInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(addPhoneInput(event.target.value));
     dispatch(changeValidNumber());
   };
   return (
     <InputMask
-      className="side__number"
+      className={
+        valid === true || valid === null ? 'side__number' : 'side__number side__number-error'
+      }
       mask="+7(___)___-__-__"
       showMask
       value={phone}
