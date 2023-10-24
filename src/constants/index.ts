@@ -1,7 +1,7 @@
 import { TLogic } from '../types';
 
 const URL = {
-  PATH: 'http://apilayer.net/api/validate?',
+  PATH: 'https://apilayer.net/api/validate?',
   API_KEY: '1b3c8fcd36d6846749054cf0bc2ac733',
 };
 
