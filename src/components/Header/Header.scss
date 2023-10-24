@@ -1,8 +1,10 @@
 header {
   position: fixed;
+  pointer-events: none;
   top: 10%;
   opacity: 0;
   z-index: 5;
+  display: none;
   width: 1230px;
   left: calc(50% - 615px);
   text-shadow: 2px 2px 2px black;
