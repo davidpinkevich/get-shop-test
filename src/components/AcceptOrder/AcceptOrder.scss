@@ -1,0 +1,37 @@
+.side__accept {
+  width: 380px;
+  height: 720px;
+  background-color: #86d3f4;
+  text-align: center;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: viewAccept 1.5s;
+  &-title {
+    font-family: 'Roboto', sans-serif;
+    margin-top: 265px;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+  &-info {
+    font-family: 'Roboto', sans-serif;
+    margin-top: 15px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+@keyframes viewAccept {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
