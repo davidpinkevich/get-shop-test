@@ -11,6 +11,7 @@ type TInitialState = {
   phoneNumber: string;
   validNumber: boolean | null;
   loading: boolean;
+  timer: boolean;
 };
 
 const initialState: TInitialState = {
@@ -22,6 +23,7 @@ const initialState: TInitialState = {
   phoneNumber: '+7(___)___-__-__',
   validNumber: null,
   loading: false,
+  timer: false,
 };
 
 export const checkValid = createAsyncThunk<{ valid: boolean }, string>(
@@ -70,6 +72,9 @@ const infoSlice = createSlice({
     changeValidNumber(state) {
       state.validNumber = null;
     },
+    changeTimerView(state, action: PayloadAction<boolean>) {
+      state.timer = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -98,4 +103,5 @@ export const {
   addPhoneInput,
   deletePhone,
   changeValidNumber,
+  changeTimerView,
 } = infoSlice.actions;
