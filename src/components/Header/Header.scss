@@ -1,0 +1,33 @@
+header {
+  position: fixed;
+  top: 10%;
+  opacity: 0;
+  z-index: 5;
+  width: 1230px;
+  left: calc(50% - 615px);
+  text-shadow: 2px 2px 2px black;
+  font-family: 'Roboto', sans-serif;
+  font-size: 64px;
+  text-align: center;
+  color: white;
+  animation: hiddenHeader 2s ease-in, opacityHeader 2s ease-in 2s;
+}
+
+@keyframes hiddenHeader {
+  0% {
+    opacity: 1;
+    top: -10%;
+  }
+  100% {
+    opacity: 1;
+    top: 10%;
+  }
+}
+@keyframes opacityHeader {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

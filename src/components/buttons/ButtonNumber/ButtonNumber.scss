@@ -1,8 +1,121 @@
 .button__number {
-  width: 50px;
-  height: 50px;
+  &-number {
+    background-color: inherit;
+    user-select: none;
+    width: 88px;
+    height: 52px;
+    border: 2px solid #000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    transition: all 0.2s;
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+  &-clear {
+    user-select: none;
+    background-color: inherit;
+    width: 186px;
+    border: 2px solid #000;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    transition: all 0.2s;
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+  &-confirm {
+    user-select: none;
+    background-color: inherit;
+    width: 100%;
+    height: 52px;
+    margin-top: 88px;
+    border: 2px solid #000;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    transition: all 0.2s;
+    &:disabled {
+      border: 1px solid #4e4e4e;
+      background-color: inherit;
+      color: #4e4e4e;
+      user-select: none;
+      pointer-events: none;
+    }
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+  &-close {
+    position: absolute;
+    left: 2652px;
+    bottom: 648px;
+    display: none;
+    background-color: white;
+    width: 88px;
+    height: 52px;
+    margin-top: 94px;
+    border: 2px solid #000;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    transition: all 0.2s;
+    &:hover {
+      background-color: black;
+      & img {
+        filter: invert(100%);
+      }
+    }
+
+    &:focus img {
+      filter: invert(100%);
+    }
+    & img {
+      position: absolute;
+      top: 26%;
+      left: 31%;
+      width: 42%;
+      height: 42%;
+    }
+  }
+}
+
+.close-animation {
+  animation: close 1.2s;
+  left: 1172px;
+  display: block;
 }
 
 .focus {
-  background-color: rgb(110, 98, 98);
+  background-color: black;
+  color: white;
+  & img {
+    filter: invert(100%);
+  }
+}
+
+@keyframes close {
+  0% {
+    left: 2652px;
+    opacity: 0;
+  }
+  100% {
+    left: 1172px;
+  }
 }

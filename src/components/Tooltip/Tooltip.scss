@@ -1,7 +1,7 @@
 .tooltip {
   position: absolute;
   top: 220px;
-  right: -260px;
+  right: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +10,6 @@
   background-color: #86d3f4;
   width: 251px;
   height: 357px;
-  opacity: 0;
   text-align: center;
   font-size: 16px;
   font-style: normal;
@@ -18,14 +17,7 @@
   font-family: 'Roboto', sans-serif;
   padding: 20px 10px 10px 10px;
   transition: all 0.5s;
-
-  &.tooltip__view {
-    opacity: 1;
-    right: 0;
-    animation: onePulse 0.8s;
-    animation-delay: 0.5s;
-  }
-
+  animation: viewTooltip 1s;
   &__header {
     font-weight: 500;
     text-transform: uppercase;
@@ -61,14 +53,11 @@
   }
 }
 
-@keyframes onePulse {
+@keyframes viewTooltip {
   0% {
-    right: 0;
-  }
-  50% {
-    right: 10px;
+    opacity: 0;
   }
   100% {
-    right: 0;
+    opacity: 1;
   }
 }
