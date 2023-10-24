@@ -1,4 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { deleteNumberPhone } from '../../utils';
+import { URL } from '../../constants';
 
 type TInitialState = {
   tooltip: boolean;
@@ -6,7 +8,9 @@ type TInitialState = {
   panelHidden: boolean;
   personalData: boolean;
   focusButton: string | null;
-  phoneNumber: Array<string>;
+  phoneNumber: string;
+  validNumber: boolean | null;
+  loading: boolean;
 };
 
 const initialState: TInitialState = {
@@ -15,8 +19,19 @@ const initialState: TInitialState = {
   panelHidden: true,
   personalData: false,
   focusButton: null,
-  phoneNumber: [],
+  phoneNumber: '+7(___)___-__-__',
+  validNumber: null,
+  loading: false,
 };
+
+export const checkValid = createAsyncThunk<{ valid: boolean }, string>(
+  'infoReducer/checkValid',
+  async (phone: string) => {
+    const response = await fetch(`${URL.PATH}access_key=${URL.API_KEY}&number=${phone}`);
+    const data = await response.json();
+    return data;
+  }
+);
 
 const infoSlice = createSlice({
   name: 'info',
@@ -34,18 +49,41 @@ const infoSlice = createSlice({
     changePersonalData(state, action: PayloadAction<boolean>) {
       state.personalData = action.payload;
     },
+    addPhoneInput(state, action: PayloadAction<string>) {
+      state.phoneNumber = action.payload;
+    },
     changeFocus(state, action: PayloadAction<string | undefined | null>) {
       if (typeof action.payload === 'string') {
         state.focusButton = action.payload;
       }
     },
-    changeNumber(state, action: PayloadAction<string>) {
+    changePhone(state, action: PayloadAction<string>) {
       if (action.payload === 'clear') {
-        state.phoneNumber = [];
-      } else {
-        state.phoneNumber.push(action.payload);
+        state.phoneNumber = '+7(___)___-__-__';
+      } else if (action.payload !== 'close' && action.payload !== 'confirm') {
+        state.phoneNumber = state.phoneNumber.replace(/_/, action.payload);
       }
     },
+    deletePhone(state) {
+      state.phoneNumber = deleteNumberPhone(state.phoneNumber);
+    },
+    changeValidNumber(state) {
+      state.validNumber = null;
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(checkValid.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(checkValid.fulfilled, (state, action) => {
+        state.loading = false;
+        if (action.payload.valid === true) {
+          state.validNumber = true;
+        } else {
+          state.validNumber = false;
+        }
+      });
   },
 });
 
@@ -54,7 +92,10 @@ export const {
   viewTooltip,
   changePlay,
   changeFocus,
-  changeNumber,
   changeHidden,
+  changePhone,
   changePersonalData,
+  addPhoneInput,
+  deletePhone,
+  changeValidNumber,
 } = infoSlice.actions;
