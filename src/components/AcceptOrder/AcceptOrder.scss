@@ -1,10 +1,11 @@
 .side__accept {
+  position: absolute;
+  z-index: 15;
   width: 380px;
   height: 720px;
   background-color: #86d3f4;
   text-align: center;
   opacity: 1;
-  position: absolute;
   top: 0;
   left: 0;
   animation: viewAccept 1.5s;
